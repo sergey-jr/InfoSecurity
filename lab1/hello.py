@@ -63,7 +63,8 @@ def get_password():
         'ru': request.args.get('ru'), 'rl': request.args.get('rl'),
         'yo': request.args.get('yo'), 'you': request.args.get('you'),
         'numbers': request.args.get('numbers'), 'special': request.args.get('special'),
-        'k': request.args.get('k'), 'v': request.args.get('v'), 'n_max': request.args.get('n_max'),
+        'k': int(request.args.get('k')), 'v': int(request.args.get('v')), 'n_max': int(request.args.get('n_max')),
+        'method': int(request.args.get('method')), 'n': int(request.args.get('n'))
     }
     for k in params:
         if params[k] in ['false', 'False', '0', 'f', 'F']:
@@ -74,7 +75,7 @@ def get_password():
     return password_generator.generate_password()
 
 
-@app.route('/get/password', methods=['GET'])
+@app.route('/get/password_strength', methods=['GET'])
 @crossdomain(origin='*')
 def get_password_strength():
     params = {
@@ -82,7 +83,7 @@ def get_password_strength():
         'ru': request.args.get('ru'), 'rl': request.args.get('rl'),
         'yo': request.args.get('yo'), 'you': request.args.get('you'),
         'numbers': request.args.get('numbers'), 'special': request.args.get('special'),
-        'k': request.args.get('k'), 'v': request.args.get('v'), 'n_max': request.args.get('n_max'),
+        'k': int(request.args.get('k')), 'v': int(request.args.get('v')), 'n_max': int(request.args.get('n_max')),
     }
     for k in params:
         if params[k] in ['false', 'False', '0', 'f', 'F']:
@@ -109,4 +110,4 @@ def get_alphabet():
         elif params[k] in ['true', 'True', '1', 't', 'T']:
             params[k] = True
     password_generator = PasswordGenerator(**params)
-    return jsonify(password_generator.get_ascii_table())#json.dumps(password_generator.get_ascii_table(), ensure_ascii=False)
+    return jsonify(password_generator.get_ascii_table())

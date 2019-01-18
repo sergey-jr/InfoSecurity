@@ -9,14 +9,6 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-table.min.css">
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/popper.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap-table.min.js"></script>
-
-    <script src="js/main.js"></script>
     <title>Password Generation</title>
 </head>
 <body>
@@ -28,7 +20,7 @@
         <a class="nav-link" href="#settings" data-toggle="tab">Настройки</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link disabled" id="result-link" href="#result" data-toggle="tab">Результат</a>
+        <a class="nav-link disabled" id="result-link" href="#result" data-toggle="tab"> Результат</a>
     </li>
 </ul>
 <div class="tab-content">
@@ -46,13 +38,13 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Введите требуемую стойкость пароля</span>
                 </div>
-                <input type="text" id="strength">
+                <input type="number" min="1" class="form-control" id="strength" placeholder="1000000000">
             </div>
             <div class="input-group py-1">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Количество символов пароля</span>
                 </div>
-                <input type="text" id="length">
+                <input type="number" min="1" class="form-control" id="length" placeholder="6">
             </div>
             <button type="submit" id="generate" class="btn btn-primary py-1 col-2">Сгенерировать</button>
         </div>
@@ -178,7 +170,7 @@
                             <input type="text" class="form-control" name="hackspeed" id="hackspeed" placeholder="1000000">
                         </div>
                         <div class="mb-3">
-                            <button class="btn btn-success col-12  calculate-complexity" type="submit">
+                            <button class="btn btn-success col-12  calculate-complexity">
                                 <span >Пуск</span>
                             </button>
                         </div>
@@ -202,11 +194,22 @@
                         </table>
                     </div>
                 </div>
-            </div>            
+        </div>            
+    </div>
+    <div class="tab-pane" id='result' role="tabpanel" aria-labelledby="result-tab">
+        <div class="container-fluid">
+            <label class="label-control">Пароль</label>
+            <div id="password-result" class="row col-12">
+            </div>
         </div>
     </div>
-    <div class="tab-pane" id='result' role="tabpanel" aria-labelledby="settings-tab">
-    </div>
 </div>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/popper.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-table.min.js"></script>
+
+<script src="js/main.js"></script>
 </body>
 </html>
