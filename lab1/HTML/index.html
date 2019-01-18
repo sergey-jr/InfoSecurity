@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-table.min.css">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-table.min.js"></script>
+
+    <script src="js/main.js"></script>
+    <title>Password Generation</title>
+</head>
+<body>
+<ul class="nav nav-tabs" id='my-tab'>
+    <li class="nav-item">
+        <a class="nav-link active" href="#home" data-toggle="tab">Главная</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#settings" data-toggle="tab">Настройки</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" id="result-link" href="#result" data-toggle="tab">Результат</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="container-fluid">
+            <label class="control-label col-12">Генерация пароля</label>
+            <label class="control-label col-12">Задайте требуемую стойкость пароля в виде:</label>
+            <select name="method" id="method" class="custom-select col-12 py-1">
+                <option selected disabled>Выберете критерий:</option>
+                <option value="1">Полное число вариантов перебора</option>
+                <option value="2">Среднее число вариантов перебора</option>
+                <option value="3">Среднее время перебора</option>
+            </select>
+            <div class="input-group py-1">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Введите требуемую стойкость пароля</span>
+                </div>
+                <input type="text" id="strength">
+            </div>
+            <div class="input-group py-1">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Количество символов пароля</span>
+                </div>
+                <input type="text" id="length">
+            </div>
+            <button type="submit" id="generate" class="btn btn-primary py-1 col-2">Сгенерировать</button>
+        </div>
+    </div>
+    <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+        <div class="container-fluid">
+                <div class="row app-region pt-3">
+                    <!--main content-->
+                    <div class="col-6 row h-200 alphabet-settings">
+                        <h6 class="col-12">
+                            <span >Параметры базового алфавита</span>
+                        </h6>
+                        <div class="form-group col-5 ml-2 form-check">
+                            <input type="checkbox" class="form-check-input alphabet-options" id="check-lu">
+                            <label class="form-check-label" for="check-lu">
+                                <span >
+                                    Включать прописные латинские буквы
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-group col-5 ml-2 form-check">
+                            <input type="checkbox" class="form-check-input alphabet-options" id="check-ll">
+                            <label class="form-check-label" for="check-ll">
+                                <span >
+                                    Включать строчные латинские буквы
+                                </span>
+                            </label>
+                        </div>
+                        <hr class="col-11">
+                        <div class="form-group col-5 ml-2 form-check">
+                            <input type="checkbox" class="form-check-input alphabet-options" id="check-ru">
+                            <label class="form-check-label" for="check-ru">
+                                <span >
+                                    Включать прописные русские буквы
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-group col-5 ml-2 form-check">
+                            <input type="checkbox" class="form-check-input alphabet-options" id="check-you">
+                            <label class="form-check-label" for="check-you">
+                                <span >
+                                    Включать Ё
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-group col-5 ml-2 form-check">
+                            <input type="checkbox" class="form-check-input alphabet-options" id="check-rl">
+                            <label class="form-check-label" for="check-rl">
+                                <span >
+                                    Включать строчные русские буквы
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-group col-5 ml-2 form-check">
+                            <input type="checkbox" class="form-check-input alphabet-options" id="check-yo">
+                            <label class="form-check-label" for="check-yo">
+                                <span >
+                                    Включать ё
+                                </span>
+                            </label>
+                        </div>
+                        <hr class="col-11">
+                        <div class="form-group col-5 ml-2 form-check">
+                            <input type="checkbox" class="form-check-input alphabet-options" id="check-n">
+                            <label class="form-check-label" for="check-n">
+                                <span >
+                                    Включать цифры
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-group col-5 ml-2 form-check">
+                            <input type="checkbox" class="form-check-input alphabet-options" id="check-sp">
+                            <label class="form-check-label" for="check-sp">
+                                <span >
+                                    Включать специальные символы
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-group ml-2">
+                            <label>
+                                <span >Количество символов базового алфавита</span>
+                            </label>
+                            <span class="size-basic-alphabet h6">0</span>
+                        </div>
+                    </div>
+                    <div class="col-6 h-200">
+                        <table id="table-codes" class="col-12"
+                            data-search="true"
+                            data-show-refresh="false"
+                            data-show-toggle="false"
+                            data-show-columns="false"
+                            data-show-export="true"
+                            data-detail-view="false"
+                            data-minimum-count-columns=3
+                            data-show-pagination-switch="false"
+                            data-pagination="true"
+                            data-smart-display="true"
+                            data-sort-class="text-secondary"
+                            data-page-size="5"
+                            data-id-field="id"
+                            data-side-pagination="client">
+                        </table>
+                    </div>
+                    <hr class="col-11">
+                </div>
+                <div class="row">
+                    <div class="col-6 mb-5 pb-5">
+                        <h6 class="col-12">
+                            <span >Исследование стойкости паролей</span>
+                        </h6>
+                        <div class="mb-3">
+                            <label for="maxlength">
+                                <span >Введите максимальную длину пароля</span>
+                            </label>
+                            <input type="number" min="1" class="form-control" name="maxlength" id="maxlength" placeholder="100">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="hackspeed">
+                                <span class="lang en"></span>
+                                <span >Введите скорость перебора паролей</span>
+                            </label>
+                            <input type="text" class="form-control" name="hackspeed" id="hackspeed" placeholder="1000000">
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-success col-12  calculate-complexity" type="submit">
+                                <span >Пуск</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-6 h-200 pt-0 mb-5">
+                        <table id="table-strength" class="col-12 mt-0"
+                            data-search="true"
+                            data-show-refresh="false"
+                            data-show-toggle="false"
+                            data-show-columns="false"
+                            data-show-export="true"
+                            data-detail-view="false"
+                            data-minimum-count-columns=3
+                            data-show-pagination-switch="false"
+                            data-pagination="true"
+                            data-smart-display="true"
+                            data-sort-class="text-secondary"
+                            data-page-size="5"
+                            data-id-field="id"
+                            data-side-pagination="client">
+                        </table>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+    <div class="tab-pane" id='result' role="tabpanel" aria-labelledby="settings-tab">
+    </div>
+</div>
+</body>
+</html>
