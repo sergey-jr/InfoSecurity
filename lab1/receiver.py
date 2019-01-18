@@ -35,7 +35,9 @@ class PasswordGenerator:
         return [{'number': i, 'code': ord(val), 'symbol': val} for i, val in enumerate(self.alphabet)]
 
     def password_strength_analysis(self):
-        return array([array([i + 1, *list(self.password_strength(i + 1).values())]) for i in range(self.length)])
+        return [{'length': i + 1, 'number': self.password_strength(i + 1)['P'],
+                 'average': self.password_strength(i + 1)['S'],
+                 'time': self.password_strength(i + 1)['T']} for i in range(self.length)]
 
     def generate_password(self):
         return "".join(random.sample(self.alphabet, self.n[self.method - 1]))
@@ -44,7 +46,6 @@ class PasswordGenerator:
         return {'P': self.a ** n,
                 'S': (self.a ** n + 1) / 2,
                 'T': (self.a ** n + 1) / (2 * self.speed)}
-
 
 # choices = input('Генерация алфавита\n'
 #                 'Введите набор из цифр(как минимум 1, через пробел):\n'
