@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-table.min.css">
+    <style>
+        #adfgx_alphabet-container, #pair_alphabet-container, #pair_language-container, #rsa_key_e-container{
+            display: none;
+        }
+    </style>
+    <title>Шифрование</title>
+</head>
+<body class="card">
+<ul class="card-header-pills nav nav-tabs" id='my-tab'>
+    <li class="nav-item">
+        <a class="nav-link active" id="adfgx-link" href="#adfgx" data-toggle="tab">Шифр ADFGX</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" id="caesar-link" href="#caesar" data-toggle="tab">Шифр цезаря</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" id="matrix-link" href="#matrix" data-toggle="tab">Матричный шифр</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" id="pair-link" href="#pair" data-toggle="tab">Шифр методом пар</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" id="viginer-link" href="#viginer" data-toggle="tab">Шифр Вижинера</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" id="squares-link" href="#squares" data-toggle="tab">Шифр четырех квадратов</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" id="rsa-link" href="#rsa" data-toggle="tab">RSA шифрование</a>
+    </li>
+</ul>
+<div class="tab-content card-body">
+    <div class="tab-pane" id='adfgx' role="tabpanel" aria-labelledby="adfgx-tab">
+        <div class="container-fluid">
+            <div class="col-md-3 input-group justify-content-between mb-md-1 row">
+                <label for="adfgx_method">Метод:</label>
+                <select name="adfgx_method" id="adfgx_method">
+                    <option value="encode">Зашифрование</option>
+                    <option value="decode">Дешифрование</option>
+                </select>
+            </div>
+            <div class="col-md-3 input-group justify-content-between mb-md-1 row">
+                <label for="adfgx_message">Сообщение:</label>
+                <input type="text" id="adfgx_message" name="adfgx_message">
+            </div>
+            <div class="col-md-3 input-group justify-content-between mb-md-1 row">
+                    <label for="adfgx_key">Ключ:</label>
+                    <input type="text" id="adfgx_key" name="adfgx_key">
+            </div>
+            <div class="col-md-3 input-group justify-content-between mb-md-1 row" id="adfgx_alphabet-container">
+                <label for="adfgx_alphabet">Алфавит:</label>
+                <input type="text" id="adfgx_alphabet" name="adfgx_alphabet">
+            </div>
+            <button class="btn-success" id="adfgx_go">ОК</button>
+            <div class="row col-md-12" id="adfgx_result"></div>
+        </div>
+    </div>
+    <div class="tab-pane" id='caesar' role="tabpanel" aria-labelledby="caesar-tab">
+        <div class="container-fluid">
+            <div class="col-md-3 input-group justify-content-between mb-md-1 row">
+                    <label for="caesar_method">Метод:</label>
+                    <select name="caesar_method" id="caesar_method">
+                        <option value="encode">Зашифрование</option>
+                        <option value="decode">Дешифрование</option>
+                    </select>
+            </div>
+            <div class="col-md-3 input-group justify-content-between mb-md-1 row">
+                <label for="caesar_message">Сообщение:</label>
+                <input type="text" id="caesar_message" name="caesar_message">
+            </div>
+            <div class="col-md-3 input-group justify-content-between mb-md-1 row">
+                    <label for="caesar_key">Ключ:</label>
+                    <input type="number" id="caesar_key" name="caesar_key">
+            </div>
+            <button class="btn-success" id="caesar_go">ОК</button>
+            <div class="row col-md-12" id="caesar_result"></div>
+        </div>
+    </div> 
+    <div class="tab-pane" id='matrix' role="tabpanel" aria-labelledby="matrix-tab">
+        <div class="container-fluid">
+            <div class="col-md-4 input-group justify-content-between mb-md-1 row">
+                <label for="matrix_method">Метод:</label>
+                <select name="matrix_method" id="matrix_method">
+                    <option value="encode">Зашифрование</option>
+                    <option value="decode">Дешифрование</option>
+                </select>
+            </div>
+            <div class="col-md-4 input-group justify-content-between mb-md-1 row">
+                <label for="matrix_message">Сообщение:</label>
+                <input type="text" id="matrix_message" name="matrix_message">
+            </div>
+            <div class="col-md-4 input-group justify-content-between mb-md-1 row">
+                    <label for="matrix_key_n">Ключ по столбцам:</label>
+                    <input type="text" id="matrix_key_n" name="matrix_key_n">
+            </div>
+            <div class="col-md-4 input-group justify-content-between mb-md-1 row">
+                <label for="matrix_key_m">Ключ по строкам:</label>
+                <input type="text" id="matrix_key_m" name="matrix_key_m">
+            </div>
+            <button class="btn-success" id="matrix_go">ОК</button>
+            <div class="row col-md-12" id="matrix_result"></div>
+        </div>
+    </div> 
+    <div class="tab-pane" id='pair' role="tabpanel" aria-labelledby="pair-tab">
+        <div class="container-fluid">
+            <div class="col-md-3 input-group justify-content-between mb-md-1 row">
+                <label for="pair_method">Метод:</label>
+                <select name="pair_method" id="pair_method">
+                    <option value="encode">Зашифрование</option>
+                    <option value="decode">Дешифрование</option>
+                </select>
+            </div>
+            <div class="col-md-3 input-group justify-content-between mb-md-1 row">
+                <label for="pair_message">Сообщение:</label>
+                <input type="text" id="pair_message" name="pair_message">
+            </div>
+            <div class="col-md-3 input-group justify-content-between mb-md-1 row" id="pair_alphabet-container">
+                <label for="pair_alphabet">Алфавит:</label>
+                <input type="text" id="pair_alphabet" name="pair_alphabet">
+            </div>
+            <div class="col-md-3 input-group justify-content-between mb-md-1 row" id="pair_language-container">
+                <label for="pair_language">Язык сообщения:</label>
+                <select name="pair_language" id="pair_language">
+                    <option value="ru">Русский</option>
+                    <option value="en">Английский</option>
+                </select>
+            </div>
+            <button class="btn-success" id="pair_go">ОК</button>
+            <div class="row col-md-12" id="pair_result"></div>
+        </div>
+    </div> 
+    <div class="tab-pane" id='viginer' role="tabpanel" aria-labelledby="viginer-tab">
+        <div class="container-fluid">
+            <div class="col-md-3 input-group justify-content-between mb-md-1 row">
+                <label for="viginer_method">Метод:</label>
+                <select name="viginer_method" id="viginer_method">
+                    <option value="encode">Зашифрование</option>
+                    <option value="decode">Дешифрование</option>
+                </select>
+            </div>
+            <div class="col-md-3 input-group justify-content-between mb-md-1 row">
+                <label for="viginer_language">Язык сообщения:</label>
+                <select name="viginer_language" id="viginer_language">
+                    <option value="ru">Русский</option>
+                    <option value="en">Английский</option>
+                </select>
+            </div>
+            <div class="col-md-3 input-group justify-content-between mb-md-1 row">
+                <label for="viginer_message">Сообщение:</label>
+                <input type="text" id="viginer_message" name="viginer_message">
+            </div>
+            <div class="col-md-3 input-group justify-content-between mb-md-1 row">
+                    <label for="viginer_key">Ключ:</label>
+                    <input type="text" id="viginer_key" name="viginer_key">
+            </div>
+            <button class="btn-success" id="viginer_go">ОК</button>
+            <div class="row col-md-12" id="viginer_result"></div>
+        </div>
+    </div> 
+    <div class="tab-pane" id='squares' role="tabpanel" aria-labelledby="squares-tab">
+        <div class="container-fluid">
+            ...
+        </div>
+    </div>
+    <div class="tab-pane" id='rsa' role="tabpanel" aria-labelledby="rsa-tab">
+        <div class="container-fluid">
+            <div class="col-md-3 input-group justify-content-between mb-md-1 row">
+                <label for="rsa_method">Метод:</label>
+                <select name="rsa_method" id="rsa_method">
+                    <option value="encode">Зашифрование</option>
+                    <option value="decode">Дешифрование</option>
+                </select>
+            </div>
+            <div class="col-md-3 input-group justify-content-between mb-md-1 row">
+                <label for="rsa_language">Язык сообщения:</label>
+                <select name="rsa_language" id="rsa_language">
+                    <option value="ru">Русский</option>
+                    <option value="en">Английский</option>
+                </select>
+            </div>
+            <div class="col-md-3 input-group justify-content-between mb-md-1 row">
+                <label for="rsa_message" id="rsa_message-label">Сообщение:</label>
+                <input type="text" id="rsa_message" name="rsa_message">
+            </div>
+            <div class="col-md-7 row mb-md-1">
+                <div class="col-md-3 input-group justify-content-between">
+                        <label for="rsa_key_p">p:</label>
+                        <input type="number" id="rsa_key_p" name="rsa_key_p" value="0">
+                </div>                
+                <div class="col-md-3 input-group justify-content-between">
+                    <label for="rsa_key_q">q:</label>
+                    <input type="number" id="rsa_key_q" name="rsa_key_q" value="0">
+                </div>
+            </div>
+            <div class="col-md-3 input-group justify-content-between" id="rsa_key_e-container">
+                <label for="rsa_key_e">e:</label>
+                <input type="number" id="rsa_key_e" name="rsa_key_e" value="0">
+            </div>
+            <button class="btn-success" id="rsa_go">ОК</button>
+            <div class="row col-md-12" id="rsa_result"></div>
+        </div>
+    </div>      
+</div>
+<div class="card-footer text-center">
+    Made by Sergey Bakaleynik © 2019
+</div>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/popper.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-table.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
