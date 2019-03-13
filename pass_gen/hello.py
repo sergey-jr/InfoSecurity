@@ -1,7 +1,7 @@
 from datetime import timedelta
-from flask import make_response, request, current_app, Flask, jsonify
 from functools import update_wrapper
-import json
+
+from flask import make_response, request, current_app, Flask, jsonify
 from receiver import PasswordGenerator
 
 app = Flask(__name__)

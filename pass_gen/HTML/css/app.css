@@ -1,0 +1,75 @@
+body {
+  background: #ecf0ea;
+  color: #000;
+  font-family: HelveticaNeue, 'Helvetica Neue', 'Lucida Grande',Arial, sans-serif;
+  font-size: 13px;
+  -webkit-app-region: drag
+}
+.hidden{
+  display: none;
+}
+a {
+  text-decoration: none;
+}
+#window-app-titlebar{
+  -webkit-app-region: drag;
+  height: 12px;
+}
+i.window-action{
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 50%; 
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    cursor: pointer;
+    -webkit-app-region: no-drag;
+}
+div.window-action-buttons:hover i{
+  color: #000 !important;
+}
+
+
+.go-back{
+  -webkit-app-region: no-drag;
+  cursor: pointer;
+}
+
+.window-action-profile {
+  position:fixed;
+  top:17px;
+  right:12px;
+  -webkit-app-region: no-drag;
+}
+.dragless{
+  -webkit-app-region: no-drag;
+}
+.modal-footer a{
+  color: #00f;
+}
+a .nav-link{
+  text-decoration: none;
+  color: inherit;
+}
+a .nav-link :hover{
+  text-decoration: none;
+}
+a .nav-link :active{
+  text-decoration: none;
+}
+.form-control, .btn, .card{
+  border-radius: 0px;
+  outline: none;
+}
+.app-region{
+  -webkit-app-region: no-drag;
+}
+/*.form-control:focus {
+  color: #495057;
+  border-color: transparent;
+  outline: none;
+}*/

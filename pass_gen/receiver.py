@@ -13,8 +13,8 @@ class PasswordGenerator:
             'ru': {'enabled': kwargs.get('ru'), 'alphabet': russian},
             'rl': {'enabled': kwargs.get('rl'), 'alphabet': russian.lower()},
             'special': {'enabled': kwargs.get('special'), 'alphabet': string.punctuation},
-            'yo': {'enabled': kwargs.get('yo', False), 'alphabet': 'ё'},
-            'you': {'enabled': kwargs.get('you', False), 'alphabet': 'Ё'}
+            'yo': {'enabled': kwargs.get('yo'), 'alphabet': 'ё'},
+            'you': {'enabled': kwargs.get('you'), 'alphabet': 'Ё'}
         }
         self.alphabet = ''.join([enable[i]['alphabet'] for i in enable.keys() if enable[i]['enabled']])
         self.n_max = kwargs.get('n_max')
@@ -43,6 +43,7 @@ class PasswordGenerator:
         return None
 
     def generate_password(self):
+        random.seed()
         if self.n[self.method - 1] <= self.n_max:
             if self.n[self.method - 1] <= self.length:
                 password = "".join(random.sample(self.alphabet, self.n[self.method - 1]))

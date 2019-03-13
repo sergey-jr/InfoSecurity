@@ -26,21 +26,21 @@ let codesymbolColumns = [
     }
 ];
 let tableStrength = 'table-strength';
-    let tableStrengthColumns = [
-        {
-            'field' : 'length',
-            'title' : '<span class="lang ru">Длина</span>'
-        },{
-            'field' : 'number',
-            'title' : '<span class="lang ru">Полное число</span>'
-        },{
-            'field' : 'average',
-            'title' : '<span class="lang ru">Средное число</span>'
-        },{
-            'field' : 'time',
-            'title' : '<span class="lang ru">Средное время</span>'
-        }
-    ];
+let tableStrengthColumns = [
+    {
+        'field' : 'length',
+        'title' : '<span class="lang ru">Длина</span>'
+    },{
+        'field' : 'number',
+        'title' : '<span class="lang ru">Полное число</span>'
+    },{
+        'field' : 'average',
+        'title' : '<span class="lang ru">Средное число</span>'
+    },{
+        'field' : 'time',
+        'title' : '<span class="lang ru">Средное время</span>'
+    }
+];
 let $symbolsTable = table(codesymbol,codesymbolColumns);
 let $complexityTable = table(tableStrength, tableStrengthColumns);
 function update_alphabet_table(){
