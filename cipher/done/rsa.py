@@ -1,6 +1,6 @@
 import string
 from numpy import array
-from math import gcd
+from math import gcd, pow
 import random
 
 
@@ -71,5 +71,5 @@ def decode(message, lang, e, p, q):
     elif lang == 'en':
         alphabet = string.ascii_lowercase
     message = array([int(item) for item in message.split()])
-    m = array([(item ** d) % n - 1 for item in message])
+    m = array([pow(item, d) % n - 1 for item in message], dtype=int)
     return ''.join([alphabet[item] for item in m])
