@@ -57,7 +57,7 @@ def encode(message, lang, p, q):
     d = gen_d(fi)
     e = gen_e(n, d, fi)
     indexes = array([alphabet.index(char) + 1 for char in message])
-    c = [int((item ** e) % n) for item in indexes]
+    c = [int((pow(item, e)) % n) for item in indexes]
     return {'c': c, 'e': e}
 
 
